@@ -1,0 +1,2 @@
+{:+ {:app [(:lt.objs.plugins/load-js ["jscs_compiled.js"])]
+     :editor.javascript [:lt.plugins.jscs/inline-lints]}}

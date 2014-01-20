@@ -1,0 +1,10 @@
+{
+  "name": "JSCS",
+  "author": "Robo",
+  "version": "0.0.1",
+  "source": "https://github.com/deepak1556/lt-jscs",
+  "desc": "JSCS plugin for Light Table",
+  "dependencies": {
+  },
+  "behaviors": "jscs.behaviors"
+}
