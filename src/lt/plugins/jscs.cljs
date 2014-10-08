@@ -5,6 +5,7 @@
             [lt.objs.command :as cmd]
             [lt.objs.editor :as editor]
             [lt.objs.editor.pool :as pool]
+            [lt.util.dom :as dom]
             [lt.objs.thread :as thread])
   (:require-macros [lt.macros :refer [defui background]]))
 
@@ -12,13 +13,12 @@
 (def config-path (files/join plugins/*plugin-dir* ".jscs.json"))
 
 (def errors (background (fn [obj-id jscs-path config-path code]
-                          (let [jscs (js/require jscs-path)]
-                            (let [checker (jscs)])
+                          (let [checker (js/require jscs-path)]
                             (.registerDefaultRules checker)
                             (.configure (js/require config-path) checker)
                             (let [errs (.checkString [code] checker)]
                               (def err_desc [])
-                              (conj err_desc (map #(err) errs))
+                              (conj err_desc (map #(%) errs))
                               (.log js/console (.explainError [first err_desc] errs)))))))
 
 (defui mark [errors spacing]
